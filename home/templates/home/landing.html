@@ -3,5 +3,28 @@
     Landing
 {% endblock %}
 {% block content %}
-    <h1>Landing</h1>
+    <div class="banner-container">
+        <div class="landing-banner">
+            <h1 class="text-white" id="landing-text"></h1>
+        </div>
+    </div>
+{% endblock %}
+
+{% block postloadjs %}
+{{ block.super }}
+<script type="text/javascript">
+    $(document).ready(function() {
+        let i = 0,text;
+        text = "Prognosis Research";
+
+        function typing() {
+            if (i < text.length) {
+                document.getElementById('landing-text').innerHTML += text.charAt(i);
+                i++;
+                setTimeout(typing, 100)
+            }
+        }
+        setTimeout(typing, 1200);
+    })
+</script>
 {% endblock %}
